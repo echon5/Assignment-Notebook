@@ -28,7 +28,6 @@ struct ContentView: View {
                                     Text(item.homework)
                                 }
                                 Spacer()
-                               
                                 Text(mode.isEditing ? "" : "\(item.dueDate, style: .date)")
                             }
                         }
@@ -39,22 +38,22 @@ struct ContentView: View {
                             assignmentList.assignment.remove(atOffsets: indexSet)
                         })
                     }
-                    .navigationBarTitle("Assignment Notebook", displayMode: .inline)
-               
-                    .fullScreenCover(isPresented: $showingAddItem, content: {
-                        AddItem(assignments: assignmentList)
-                    })
-                    .navigationBarItems(
-                        leading:
-                            EditButton(),
-                        trailing:
-                        Button(action: {
-                            showingAddItem = true
-                        }) {
-                            Image(systemName: "plus.app")
-                                .imageScale(.large)
-    })
-                    .environment(\.editMode, $mode)
+                        .navigationBarTitle("Assignment Notebook", displayMode: .inline)
+                    
+                        .fullScreenCover(isPresented: $showingAddItem, content: {
+                            AddItem(assignments: assignmentList)
+                        })
+                        .navigationBarItems(
+                            leading:
+                                EditButton(),
+                            trailing:
+                                Button(action: {
+                                    showingAddItem = true
+                                }) {
+                                    Image(systemName: "plus.app")
+                                        .imageScale(.large)
+                                })
+                        .environment(\.editMode, $mode)
                 )
         }
         .preferredColorScheme(.light)
@@ -80,7 +79,7 @@ struct ContentView: View {
             return .black
         }
     }
-   
+    
     init() {
         UITableView.appearance().backgroundColor = .clear
         UITableViewCell.appearance().backgroundColor = .clear
